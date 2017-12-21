@@ -6,7 +6,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Helper methods related to requesting and receiving earthquake data from USGS.
@@ -31,6 +33,34 @@ public final class QueryUtils {
      */
     private QueryUtils() {
     }
+
+    public static List<Earthquake> extractEarthquakes(String link){
+        List<Earthquake> earthquakes = new ArrayList<Earthquake>();
+
+        URL url = createURL(link);
+        String response = makeHTTPRequest(url);
+        earthquakes = parseJSON(response);
+
+        return  earthquakes;
+    }
+
+    public static List<Earthquake> parseJSON(String response) {
+        //        todo: implement this method
+        return null;
+    }
+
+    public static String makeHTTPRequest(URL url) {
+        //        todo: implement this method
+        return null;
+    }
+
+    public static URL createURL(String link) {
+//        todo: implement this method
+        return null;
+    }
+
+
+
 
     /**
      * Return a list of {@link Earthquake} objects that has been built up from
@@ -83,4 +113,5 @@ public final class QueryUtils {
         // Return the list of earthquakes
         return earthquakes;
     }
+
 }

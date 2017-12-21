@@ -17,6 +17,7 @@ package com.example.android.quakereport;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EarthquakeActivity extends AppCompatActivity {
 
@@ -45,6 +47,7 @@ public class EarthquakeActivity extends AppCompatActivity {
         earthquakes.add("Rio de Janeiro");
         earthquakes.add("Paris");*/
 
+//        todo: move code to async task
         // Create a fake list of earthquakes.
         ArrayList<Earthquake> earthquakes = QueryUtils.extractEarthquakes();
 
@@ -70,5 +73,23 @@ public class EarthquakeActivity extends AppCompatActivity {
                 startActivity(websiteIntent);
             }
         });
+    }
+
+    private class EarthquakeAsyncTask extends AsyncTask<String, Void, List<Earthquake>> {
+
+        @Override
+        protected List<Earthquake> doInBackground(String... strings) {
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(List<Earthquake> earthquakes) {
+            super.onPostExecute(earthquakes);
+        }
     }
 }
